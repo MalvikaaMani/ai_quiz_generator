@@ -2,15 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";  // ✅ import useParams
 import "../styles/StudentLobby.css";
 
+const API_BASE_URL = process.env.REACT_APP_BACKEND_URL
+
 export default function StudentLobby() {
   const { sessionCode } = useParams();   // ✅ get from URL params
   const [status, setStatus] = useState("connecting");
   const wsRef = useRef(null);
 
-  const wsProtocol = window.location.protocol === "https:" ? "wss" : "ws";
-  const host = process.env.REACT_APP_BACKEND_HOST || "localhost:8000";
-  const wsUrl = `${wsProtocol}://${host}/ws/${encodeURIComponent(sessionCode)}`;
-
+  const wsProtocol = API_BASE_URL.startsWith("https") ? "wss" : "ws";
+  const wsHost = API_BASE_URL.replace(/^https?:\/\//, "");
+  const wsUrl = `${wsProtocol}://${wsHost}/ws/${encodeURIComponent(sessionCode)}`;
   useEffect(() => {
     console.log("StudentLobby mounted with sessionCode:", sessionCode);
     console.log("Connecting to:", wsUrl);

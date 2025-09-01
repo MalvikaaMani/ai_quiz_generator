@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../styles/StudentQuiz.css";
+const API_BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
 export default function StudentQuiz() {
   const { sessionCode } = useParams();
@@ -16,9 +17,7 @@ export default function StudentQuiz() {
   useEffect(() => {
     async function fetchQuiz() {
       try {
-        const res = await fetch(`
-          http://localhost:8000/quiz/${encodeURIComponent(sessionCode)}`
-        );
+        const res = await fetch(`${API_BASE_URL}/quiz/${encodeURIComponent(sessionCode)}`);
         const data = await res.json();
         if (data && data.questions) {
             console.log("Fetched questions:", data.questions);
@@ -48,7 +47,7 @@ export default function StudentQuiz() {
       }
 
       // ✅ Send each answer to backend
-      await fetch("http://localhost:8000/submit-answer", {
+      await fetch(`${API_BASE_URL}/submit-answer`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

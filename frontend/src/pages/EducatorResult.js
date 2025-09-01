@@ -1,6 +1,7 @@
 // EducatorResults.js
 import React, { useState } from "react";
 import "../styles/EducatorResult.css";
+const API_BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
 export default function EducatorResults() {
   const [sessionCode, setSessionCode] = useState("");
@@ -22,12 +23,13 @@ export default function EducatorResults() {
 
     try {
       // ✅ Fetch raw results (all student answers)
-      const resResults = await fetch(`http://127.0.0.1:8000/results/${sessionCode}`);
+      
+      const resResults = await fetch(`${API_BASE_URL}/results/${sessionCode}`);
       if (!resResults.ok) throw new Error("Failed to fetch results");
       const dataResults = await resResults.json();
 
       // ✅ Fetch aggregated scores
-      const resScores = await fetch(`http://127.0.0.1:8000/results/${sessionCode}/scores`);
+      const resScores = await fetch(`${API_BASE_URL}/results/${sessionCode}/scores`);;
       if (!resScores.ok) throw new Error("Failed to fetch scores");
       const dataScores = await resScores.json();
 

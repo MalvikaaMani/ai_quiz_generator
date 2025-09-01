@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/EducatorDashboard.css";
 
+const API_BASE_URL = process.env.REACT_APP_BACKEND_URL;
+
 export default function EducatorDashboard() {
   const [topic, setTopic] = useState("");
   const [numQuestions, setNumQuestions] = useState(5);
@@ -38,7 +40,7 @@ export default function EducatorDashboard() {
       setSessionCode(code);
       localStorage.setItem("sessionCode", code);
 
-      const response = await fetch("http://127.0.0.1:8000/generate-quiz", {
+      const response = await fetch(`${API_BASE_URL}/generate-quiz`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -64,7 +66,10 @@ export default function EducatorDashboard() {
       }
 
       // ✅ Setup WebSocket
-      const ws = new WebSocket(`ws://127.0.0.1:8000/ws/${code}`);
+
+      const wsProtocol = API_BASE_URL.startsWith("https") ? "wss" : "ws";
+      const wsHost = API_BASE_URL.replace(/^https?:\/\//, "");  // remove protocol
+      const ws = new WebSocket(`${wsProtocol}://${wsHost}/ws/${code}`);
       ws.onopen = () => {
         console.log("✅ Educator WebSocket connected");
         ws.send(JSON.stringify({ type: "educator_joined", sessionId: code }));
@@ -93,7 +98,7 @@ export default function EducatorDashboard() {
   const handleStartQuiz = async () => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/start_quiz/${sessionCode}`,
+        `${API_BASE_URL}/start_quiz/${sessionCode}`,
         { method: "POST" }
       );
 
