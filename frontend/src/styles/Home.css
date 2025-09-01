@@ -1,0 +1,132 @@
+*{
+    box-sizing: border-box;
+}
+/* Global funky background */
+.container {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #7f5eff, #ff6ec7, #ffde59);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+}
+
+/* Animate gradient */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Title + tagline */
+.page--heading{
+  font-size: 3rem;
+  font-weight: 800;
+  margin-top: 50px;
+  /* animation: bounce 2s infinite; */
+  font-family: 'Poppins', sans-serif;
+}
+
+.page--text {
+  font-size: 1.3rem;
+  margin-top: 10px;
+  color: #fffbe7;
+  text-shadow: 1px 1px 4px #00000055;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Action buttons */
+.home-actions {
+  margin-top: 60px;
+}
+
+.btn {
+  padding: 14px 28px;
+  margin: 10px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
+}
+
+.educator-btn {
+  background: #4ee44e;
+  color: #1a1a1a;
+}
+
+.join-btn {
+  background: #ff595e;
+  color: #fff;
+}
+
+/* Hover effects */
+.btn:hover {
+  transform: scale(1.1) rotate(-2deg);
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Session form */
+.form--action{
+  margin-top: 20px;
+  display: inline-flex;
+  gap: 10px;
+}
+
+.session-input {
+  padding: 12px 16px;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  width: 220px;
+  box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
+}
+
+/* How it works section */
+.how-it-works {
+  margin-top: 80px;
+}
+
+.how-it-works h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 4px #00000055;
+  font-family: 'Poppins', sans-serif;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 1.2rem;
+}
+
+.step {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 12px 20px;
+  border-radius: 20px;
+  transition: transform 0.3s;
+}
+
+.step:hover {
+  transform: translateY(-5px) scale(1.05);
+}
+
+/* Footer */
+/* .home-footer {
+  margin-top: 60px;
+  font-size: 0.9rem;
+  opacity: 0.9;
+} */

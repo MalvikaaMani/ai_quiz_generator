@@ -1,0 +1,49 @@
+/* src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Press+Start+2P&display=swap');
+
+:root {
+  --background-dark: #0d0d21;
+  --background-card-color: rgba(42, 0, 80, 0.5);
+  --neon-green: #00ffc8;
+  --neon-pink: #ff00ff;
+  --text-light: #f0f0f0;
+}
+
+body {
+    background: var(--background-dark);
+    color: var(--text-light);
+    font-family: 'Press Start 2P', monospace;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle, #2a0050 0%, var(--background-dark) 100%);
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Animations */
+@keyframes neon-glow {
+    from { text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green); }
+    to { text-shadow: 0 0 20px var(--neon-green), 0 0 30px var(--neon-green), 0 0 40px var(--neon-green); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes score-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}

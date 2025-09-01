@@ -1,0 +1,53 @@
+/* Base styles for the entire app */
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Press+Start+2P&display=swap');
+
+body {
+    background: #0d0d21; /* Dark blue background */
+    color: #f0f0f0; /* Light gray text */
+    font-family: 'Press Start 2P', monospace;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Major Mono Display', monospace;
+    text-transform: uppercase;
+    color: #00ffc8; /* Neon green */
+    text-shadow: 0 0 10px #00ffc8, 0 0 20px #00ffc8;
+}
+
+/* Base button and input styles */
+button {
+    background: #ff00ff; /* Neon pink */
+    color: white;
+    font-family: 'Press Start 2P', monospace;
+    padding: 15px 30px;
+    border: 3px solid #00ffc8;
+    cursor: pointer;
+    box-shadow: 0 0 10px #ff00ff;
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+    background: #00ffc8;
+    color: #0d0d21;
+    box-shadow: 0 0 20px #00ffc8;
+    transform: scale(1.05);
+}
+
+input[type="text"] {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #00ffc8;
+    color: #f0f0f0;
+    font-family: 'Press Start 2P', monospace;
+    padding: 10px;
+    margin: 10px 0;
+    outline: none;
+    box-shadow: 0 0 5px #00ffc8;
+    transition: box-shadow 0.2s;
+}
+
+input[type="text"]:focus {
+    box-shadow: 0 0 15px #00ffc8;
+}

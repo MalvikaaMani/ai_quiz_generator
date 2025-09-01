@@ -1,0 +1,96 @@
+.results-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.results-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-family: 'Poppins',sans-serif;
+}
+
+.input-section {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.session-input {
+  padding: 8px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 200px;
+}
+
+.fetch-btn {
+  padding: 8px 14px;
+  background-color: #4cafef;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.fetch-btn:hover {
+  background-color: #3498db;
+}
+
+.loading {
+  text-align: center;
+  color: #555;
+}
+
+.error {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+}
+
+.scores-section,
+.detailed-section {
+  margin-top: 30px;
+}
+.scores-section-header{
+    font-family: 'Poppins',sans-serif;
+}
+
+.scores-table,
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  color: #fff; /* White text by default */
+}
+
+.scores-table th,
+.results-table th,
+.scores-table td,
+.results-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Header background */
+.scores-table th,
+.results-table th {
+  background-color: #333; /* Dark gray */
+  color: #fff; /* White text */
+}
+
+
+/* Alternate row shading for better readability */
+.results-table tr:nth-child(odd) {
+  background-color: #1e1e2f; /* Dark bluish gray */
+}
+.results-table tr:nth-child(even) {
+  background-color: #2e2e3f; /* Slightly lighter */
+}
+.detailed-section-header{
+     font-family: 'Poppins', sans-serif;
+}
