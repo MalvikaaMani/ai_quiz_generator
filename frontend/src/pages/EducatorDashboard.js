@@ -1,5 +1,5 @@
 // src/pages/EducatorDashboard.js
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/EducatorDashboard.css";
 
@@ -20,7 +20,7 @@ export default function EducatorDashboard() {
 
   const navigate = useNavigate();
 
-  // ✅ Generate random session code
+  // Generate random session code
   const generateSessionCode = () => {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     return Array.from({ length: 6 }, () =>
@@ -28,7 +28,7 @@ export default function EducatorDashboard() {
     ).join("");
   };
 
-  // ✅ Generate quiz
+  // Generate quiz
   const handleGenerateQuiz = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -36,6 +36,8 @@ export default function EducatorDashboard() {
     setQuiz(null);
 
     try {
+      if (!API_BASE_URL) throw new Error("Backend URL not configured");
+
       const code = generateSessionCode();
       setSessionCode(code);
       localStorage.setItem("sessionCode", code);
@@ -51,12 +53,19 @@ export default function EducatorDashboard() {
         }),
       });
 
-      if (!response.ok) throw new Error(`Error: ${response.status}`);
+      const text = await response.text();
+      if (!response.ok) {
+        throw new Error(`Backend error ${response.status}: ${text}`);
+      }
 
-      const data = await response.json();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        throw new Error(`Invalid JSON from backend: ${text}`);
+      }
+
       console.log("Quiz data:", data);
-
-      // ✅ Normalize quiz format
       if (data.quiz && Array.isArray(data.quiz.questions)) {
         setQuiz(data.quiz);
       } else if (data.questions) {
@@ -65,57 +74,73 @@ export default function EducatorDashboard() {
         setQuiz({ questions: [] });
       }
 
-      // ✅ Setup WebSocket
+      // WebSocket setup
+      if (API_BASE_URL) {
+        const wsProtocol = API_BASE_URL.startsWith("https") ? "wss" : "ws";
+        const wsHost = API_BASE_URL.replace(/^https?:\/\//, "");
+        const ws = new WebSocket(`${wsProtocol}://${wsHost}/ws/${code}`);
 
-      const wsProtocol = API_BASE_URL.startsWith("https") ? "wss" : "ws";
-      const wsHost = API_BASE_URL.replace(/^https?:\/\//, "");  // remove protocol
-      const ws = new WebSocket(`${wsProtocol}://${wsHost}/ws/${code}`);
-      ws.onopen = () => {
-        console.log("✅ Educator WebSocket connected");
-        ws.send(JSON.stringify({ type: "educator_joined", sessionId: code }));
-        setSocket(ws);
-      };
-      ws.onerror = (e) => {
-        console.error("❌ WebSocket error:", e);
-        alert("WebSocket connection failed. Please check backend.");
-      };
-      ws.onclose = () => {
-        console.warn("⚠️ WebSocket closed.");
-        setSocket(null);
-      };
-      ws.onmessage = (msg) => {
-        console.log("📩 Message from server:", msg.data);
-      };
+        ws.onopen = () => {
+          console.log("✅ Educator WebSocket connected");
+          ws.send(JSON.stringify({ type: "educator_joined", sessionId: code }));
+          setSocket(ws);
+        };
+
+        ws.onerror = (e) => {
+          console.error("❌ WebSocket error:", e);
+          alert("WebSocket connection failed. Please check backend.");
+        };
+
+        ws.onclose = () => {
+          console.warn("⚠️ WebSocket closed.");
+          setSocket(null);
+        };
+
+        ws.onmessage = (msg) => {
+          console.log("📩 Message from server:", msg.data);
+        };
+      }
     } catch (err) {
       console.error(err);
-      setError("Failed to generate quiz. Please try again.");
+      setError(err.message || "Failed to generate quiz. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
-  // ✅ Start quiz
+  // Start quiz
   const handleStartQuiz = async () => {
     try {
+      if (!API_BASE_URL) throw new Error("Backend URL not configured");
+      if (!sessionCode) throw new Error("No session code found");
+
       const response = await fetch(
         `${API_BASE_URL}/start_quiz/${sessionCode}`,
         { method: "POST" }
       );
 
-      if (!response.ok) throw new Error("Failed to start quiz");
+      const text = await response.text();
+      if (!response.ok) {
+        throw new Error(`Backend error ${response.status}: ${text}`);
+      }
 
-      const result = await response.json();
+      let result;
+      try {
+        result = JSON.parse(text);
+      } catch {
+        throw new Error(`Invalid JSON from backend: ${text}`);
+      }
+
       console.log("Start quiz result:", result);
-
       setQuizStarted(true);
       alert("✅ Quiz Started! Students will be notified.");
     } catch (err) {
       console.error("Error starting quiz:", err);
-      alert("❌ Could not start quiz.");
+      alert(err.message || "❌ Could not start quiz.");
     }
   };
 
-  // ✅ View results
+  // View results
   const handleViewResults = () => {
     if (sessionCode) {
       navigate(`/results/${sessionCode}`);
