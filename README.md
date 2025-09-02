@@ -61,8 +61,7 @@ QuizifyAI is a real-time, interactive quiz generation platform designed for educ
 <ul>
 
 <li>Render: The platform used to deploy the frontend and backend of the application. </li>
-
-&nbsp;</ul>
+</ul>
 
 <li>API: </li>
 
@@ -90,67 +89,60 @@ QuizifyAI is a real-time, interactive quiz generation platform designed for educ
 
 </ul>
 
-<ol> Clone the Repository:
+<p>1. Clone the Repository:</p>
 
-<li> git clone https://github.com/your-username/your-repo-name.git</li>
+<li> git clone https://github.com/MalvikaaMani/ai_quiz_generator</li>
 
 <li>cd your-repo-name </li>
 
-</ol>
+<p>2. Backend Setup:</p>
 
-<ol>Backend Setup:
-
-<!--# Navigate to the backend directory--> <br>
+<!--Navigate to the backend directory--> <br>
 
 <p> cd backend </p> 
 
 <br>
-
-<!--# Create and activate a virtual environment--><br>
+<!-- Create and activate a virtual environment--><br>
 
 <p>python3 -m venv venv</p> <br>
 
-<p>venv\\Scripts\\activate (On Windows)
+<p>venv\Scripts\activate (On Windows)
 
-<!--# Install dependencies--><br>
+<!--Install dependencies--><br>
 
 <p> pip install -r requirements.txt</p>
 
 <br>
 
-<!--# Create a `.env` file and add your credentials--><br>
+<!--Create a `.env` file and add your credentials--><br>
 
-<p>GEMINI\_API\_KEY="your\_gemini\_api\_key"</p>
-
-<br>
-
-<p>MONGODB\_URI="your\_mongodb\_connection\_string" </p>
+<p>GEMINI_API_KEY="your_gemini_api_key"</p>
 
 <br>
 
-<!-- # Run the server--><br>
+<p>MONGODB_URI="your_mongodb_connection_string" </p>
+
+<br>
+
+<!--Run the server--><br>
 
 <p> uvicorn main:app --reload</p>
 
-</ol>
+<p>3. Frontend Setup:</p>
 
-
-
-<ol> Frontend Setup:
-
-<!--# Navigate to the frontend directory--><br>
+<!--Navigate to the frontend directory--><br>
 
 <p> cd ../frontend</p>
 
 <br>
 
-<!--# Install dependencies--><br>
+<!--Install dependencies--><br>
 
 <p>npm install</p>
 
 <br>
 
-<!--# Start the development server--> <br>
+<!--Start the development server--> <br>
 
 <p> npm start</p>
 
