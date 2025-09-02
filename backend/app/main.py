@@ -36,10 +36,15 @@ app = FastAPI()
 app.include_router(session_routes.router)
 app.include_router(quiz_routes.router)
 
+origins = [
+    "http://localhost:3000",          # React dev server
+    "https://your-frontend-domain.com"  # deployed frontend
+]
+
 # CORS for React frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # ⚠️ tighten in prod
+    allow_origins=origins,  # ⚠️ tighten in prod
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
