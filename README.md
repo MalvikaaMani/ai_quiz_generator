@@ -182,7 +182,7 @@ QuizifyAI is a real-time, interactive quiz generation platform designed for educ
 You can try the deployed AI Quiz Generator project online by clicking the link below:
 ## Live Demo
 
-[Try it yourself](https://ai-quiz-generator-app.onrender.com)
+[Try it yourself] (https://ai-quiz-generator-app.onrender.com)
 
 Note: Make sure your backend is also deployed and running, as the frontend interacts with it to generate quizzes.
 
