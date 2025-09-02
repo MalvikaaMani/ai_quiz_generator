@@ -95,54 +95,44 @@ QuizifyAI is a real-time, interactive quiz generation platform designed for educ
 
 <li>cd your-repo-name </li>
 
+
 <p>2. Backend Setup:</p>
 
-<!--Navigate to the backend directory--> <br>
+**Navigate to the backend directory** 
 
 <p> cd backend </p> 
 
-<br>
-<!-- Create and activate a virtual environment--><br>
+** Create and activate a virtual environment**
 
-<p>python3 -m venv venv</p> <br>
+<p>python3 -m venv venv</p> 
 
 <p>venv\Scripts\activate (On Windows)
 
-<!--Install dependencies--><br>
+**Install dependencies**
 
 <p> pip install -r requirements.txt</p>
 
-<br>
-
-<!--Create a `.env` file and add your credentials--><br>
+**Create a `.env` file and add your credentials**
 
 <p>GEMINI_API_KEY="your_gemini_api_key"</p>
 
-<br>
-
 <p>MONGODB_URI="your_mongodb_connection_string" </p>
 
-<br>
-
-<!--Run the server--><br>
+**Run the server**
 
 <p> uvicorn main:app --reload</p>
 
 <p>3. Frontend Setup:</p>
 
-<!--Navigate to the frontend directory--><br>
+**Navigate to the frontend directory**
 
 <p> cd ../frontend</p>
 
-<br>
-
-<!--Install dependencies--><br>
+**Install dependencies**
 
 <p>npm install</p>
 
-<br>
-
-<!--Start the development server--> <br>
+**Start the development server**
 
 <p> npm start</p>
 
