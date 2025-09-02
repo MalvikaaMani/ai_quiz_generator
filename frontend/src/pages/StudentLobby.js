@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";  // ✅ import useParams
+import { useParams,useNavigate } from "react-router-dom";  // ✅ import useParams
 import "../styles/StudentLobby.css";
 
 const API_BASE_URL = process.env.REACT_APP_BACKEND_URL
 
+
+
 export default function StudentLobby() {
   const { sessionCode } = useParams();   // ✅ get from URL params
+  const navigate=useNavigate();
   const [status, setStatus] = useState("connecting");
   const wsRef = useRef(null);
 
@@ -45,7 +48,7 @@ export default function StudentLobby() {
       if (normalized === "quiz_started" || normalized === "started") {
         setStatus("started");
         setTimeout(() => {
-          window.location.href = `/quiz/${encodeURIComponent(sessionCode)}`;
+          navigate(`/quiz/${encodeURIComponent(sessionCode)}`);
         }, 1200);
       } else if (normalized === "waiting") {
         setStatus("waiting");
