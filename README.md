@@ -89,50 +89,50 @@ QuizifyAI is a real-time, interactive quiz generation platform designed for educ
 
 </ul>
 
-<p>1. Clone the Repository:</p>
+<p>1.<b> Clone the Repository: </b></p>
 
 <li> git clone https://github.com/MalvikaaMani/ai_quiz_generator</li>
 
 <li>cd your-repo-name </li>
+<br>
 
+<p>2.<b> Backend Setup:</b></p>
 
-<p>2. Backend Setup:</p>
-
-**Navigate to the backend directory** 
+<li>Navigate to the backend directory</li> 
 
 <p> cd backend </p> 
 
-** Create and activate a virtual environment**
+<li>Create and activate a virtual environment</li>
 
 <p>python3 -m venv venv</p> 
 
 <p>venv\Scripts\activate (On Windows)
 
-**Install dependencies**
+<li>nstall dependencies</li>
 
 <p> pip install -r requirements.txt</p>
 
-**Create a `.env` file and add your credentials**
+<li>Create a `.env` file and add your credentials</li>
 
 <p>GEMINI_API_KEY="your_gemini_api_key"</p>
 
 <p>MONGODB_URI="your_mongodb_connection_string" </p>
 
-**Run the server**
+<li>Run the server</li>
 
 <p> uvicorn main:app --reload</p>
 
-<p>3. Frontend Setup:</p>
+<p>3. <b>Frontend Setup: </b></p>
 
-**Navigate to the frontend directory**
+<li>Navigate to the frontend directory</li>
 
 <p> cd ../frontend</p>
 
-**Install dependencies**
+<li>nstall dependencies</li>
 
 <p>npm install</p>
 
-**Start the development server**
+<li>Start the development server</li>
 
 <p> npm start</p>
 
@@ -179,4 +179,7 @@ QuizifyAI is a real-time, interactive quiz generation platform designed for educ
 <h2> Deployment</h2>
 
 <p> The project is deployed on Render, with the frontend and backend running as separate services. The backend API communicates with the MongoDB Atlas database. The Gemini API key is configured as an environment variable in the Render service settings.</p>
+## Live Demo
+
+Check out the deployed project [here](https://ai-quiz-generator-app.onrender.com).
 
