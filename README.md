@@ -186,5 +186,7 @@ You can try the deployed AI Quiz Generator project online by clicking the link b
  (https://ai-quiz-generator-app.onrender.com)
 
 Note: Make sure your backend is also deployed and running, as the frontend interacts with it to generate quizzes.
+<br>
+<p> To view the demo of the project, first, click on the quizify_demo.mp4 file present in this repo. Second, click on view raw option, the file gets downloaded in your system. After when file is downloaded, you can watch the video in your laptop/PC/mobile. </p>
 
 
