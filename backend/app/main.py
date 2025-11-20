@@ -17,7 +17,8 @@ logging.basicConfig(level=logging.INFO)
 
 # Configure Gemini
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel(model_name="gemini-2.5-flash-preview-05-20")
+model = genai.GenerativeModel(model_name="gemini-2.5-flash")
+
 
 class QuizRequest(BaseModel):
     session_code: str

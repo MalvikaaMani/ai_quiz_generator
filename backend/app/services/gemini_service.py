@@ -3,7 +3,8 @@ import requests
 import json
 from app.config import GEMINI_API_KEY
 
-API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent"
+API_URL = "https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent"
+
 
 def generate_quiz_from_prompt(prompt: str, num_questions: int = 5, difficulty: str = "medium"):
     headers = {"Content-Type": "application/json"}
